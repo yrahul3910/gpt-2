@@ -50,7 +50,9 @@ parser.add_argument('--val_dataset', metavar='PATH', type=str, default=None, hel
 parser.add_argument('--val_batch_size', metavar='SIZE', type=int, default=2, help='Batch size for validation.')
 parser.add_argument('--val_batch_count', metavar='N', type=int, default=40, help='Number of batches for validation.')
 parser.add_argument('--val_every', metavar='STEPS', type=int, default=0, help='Calculate validation loss every STEPS steps.')
+
 parser.add_argument('--stop_after', metavar='STOP', type=int, default=None, help='Stop after STOP epochs')
+parser.add_argument('--keep_max_checkpoints', metavar='MAXCHECK', type=int, default=5, help='Max number of checkpoints to keep')
 
 def maketree(path):
     try:
@@ -150,7 +152,7 @@ def main():
 
         saver = tf.train.Saver(
             var_list=all_vars,
-            max_to_keep=5,
+            max_to_keep=args.keep_max_checkpoints,
             keep_checkpoint_every_n_hours=2)
         sess.run(tf.global_variables_initializer())
 
