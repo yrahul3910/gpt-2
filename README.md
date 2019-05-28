@@ -97,6 +97,12 @@ We may release code for evaluating the models on various benchmarks.
 
 We are still considering release of the larger models.
 
+## Using the chatbot
+The chatbot is a modified version of the interactive conditional sampler. To run the chatbot, you have two options. For both options, cd to the root `gpt-2` folder, and run the commands. Because the program looks for a `models` folder, you need to run them from the root folder and not the containing folders.  
+
+* **Interactive:** To run this mode, run `python3 src/chatbot.py`. This runs an interactive session where you can chat with the trained model. Change the `user_name` and `friend_name` parameters before running.
+* **Web App:** For the more fancy. Run `FLASK_APP=src/WebApp/chat_server.py python3 -m flask run`. This runs the Flask server, and you can access the website via a browser (on the local machine).
+
 ## License
 
 [MIT](./LICENSE)
